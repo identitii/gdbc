@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.github.identitii.gdbc</groupId>
+	<artifactId>wrapper</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>wrapper</name>
+	<url>https://github.com/identitii/gdbc</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.7</maven.compiler.source>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.graalvm.sdk</groupId>
+			<artifactId>graal-sdk</artifactId>
+			<version>1.0.0-rc16</version>
+		</dependency>
+
+		<!-- Just used for the test methods... -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.16</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+</project>
