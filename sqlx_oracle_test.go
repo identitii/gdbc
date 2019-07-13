@@ -3,9 +3,10 @@
 package gdbc_test
 
 import (
+	"testing"
 	"fmt"
 	"log"
-	"testing"
+	"time"
 
 	"github.com/jmoiron/sqlx"
 
@@ -21,7 +22,7 @@ var host = env("ORACLE_HOST", "localhost")
 
 var jdbcURL = fmt.Sprintf("jdbc:oracle:thin:%s/%s@%s:1521:%s", user, password, host, db)
 
-func BenchmarkOracleJDBC(b *testing.B) {
+func aBenchmarkOracleJDBC(b *testing.B) {
 	log.Println(jdbcURL)
 	benchmark(b, "gdbc-oracle", jdbcURL, sqlx.QUESTION)
 }
@@ -35,3 +36,95 @@ func BenchmarkOracleJDBC(b *testing.B) {
 // func BenchmarkOracleOCI8(b *testing.B) {
 // 	benchmark(b, "oci8", fmt.Sprintf("%s/%s@%s/%s", user, password, host, db), sqlx.QUESTION)
 // }
+
+func aTestBuildDate(t *testing.T) {
+
+	conn, err := oracle.Open(jdbcURL)
+	if err != nil {
+		panic(err)
+	}
+
+	date, err := conn.DriverBuildDate()
+	if err != nil {
+		panic(err)
+	}
+
+	log.Printf("Oracle driver build date: " + date);
+
+}
+
+func TestContinuousQueryNotification(t *testing.T) {
+
+	oracle.EnableTracing(false)
+
+	
+
+	conn, err := oracle.Open(jdbcURL)
+	if err != nil {
+		panic(err)
+	}
+
+	dcn, err := conn.RegisterDatabaseChangeNotification(1, oracle.CQNOptions{
+		NTF_LOCAL_HOST: "192.168.128.187",
+		DCN_NOTIFY_ROWIDS: true,
+		DCN_QUERY_CHANGE_NOTIFICATION: true,
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	state, err := dcn.GetState()
+	if err != nil {
+		panic(err)
+	}
+	log.Printf("state: %s", state)
+
+	
+	go func() {
+
+		db := getDb(t, "gdbc-oracle", jdbcURL)
+		if db == nil {
+			return
+		}
+
+		for {
+			time.Sleep(time.Second * 2)
+			log.Println("adding rows")
+			runTest(db, sqlx.QUESTION)
+
+			
+		}
+	}()
+
+	log.Printf("CQN regId: %d", dcn.GetRegId())
+
+	//runTest(db, sqlx.QUESTION)
+
+	state, err = dcn.GetState()
+	if err != nil {
+		panic(err)
+	}
+	log.Printf("state: %s", state)
+
+	if err := dcn.AddQuery(`SELECT * FROM "person"`); err != nil {
+		panic(err)
+	}
+
+	state, err = dcn.GetState()
+	if err != nil {
+		panic(err)
+	}
+	log.Printf("state: %s", state)
+
+	// tables, err := dcn.GetTables()
+	// if err != nil {
+	// 	panic(err)
+	// }
+
+	//log.Printf("CQN tables: %#v", tables)
+
+	log.Println("Sleeping")
+
+	time.Sleep(time.Second * 99999)
+  
+}
