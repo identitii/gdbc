@@ -1,0 +1,12 @@
+[
+    {
+        "name": "org.mariadb.jdbc.internal.util.Options",
+        "allDeclaredClasses": true,
+        "allDeclaredConstructors": true,
+        "allDeclaredFields" : true,
+        "allDeclaredMethods": true,
+        "allPublicClasses": true,
+        "allPublicConstructors": true,
+        "allPublicMethods": true
+    }
+]

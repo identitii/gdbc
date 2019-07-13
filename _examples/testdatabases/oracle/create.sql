@@ -1,0 +1,3 @@
+alter session set "_ORACLE_SCRIPT"=true;  
+CREATE USER "GDBCUSER" IDENTIFIED by "password"; 
+GRANT CONNECT, RESOURCE, DBA to "GDBCUSER" with ADMIN OPTION; 

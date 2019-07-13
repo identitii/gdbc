@@ -1,0 +1,20 @@
+[
+    {
+        "name": "com.mysql.cj.core.exceptions.CJException",
+        "allDeclaredClasses": true,
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true,
+        "allPublicClasses": true
+    },
+    {
+        "name": "com.mysql.cj.core.exceptions.WrongArgumentException",
+        "allDeclaredClasses": true,
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true,
+        "allPublicClasses": true
+    }
+]

@@ -1,0 +1,56 @@
+[
+    {
+        "name": "com.mysql.jdbc.log.StandardLogger",
+        "allDeclaredClasses": true,
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true,
+        "allPublicClasses": true
+    },
+    {
+        "name": "com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException",
+        "allDeclaredClasses": true,
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true,
+        "allPublicClasses": true
+    },
+    {
+        "name": "com.mysql.jdbc.StandardSocketFactory",
+        "allDeclaredClasses": true,
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true,
+        "allPublicClasses": true
+    },
+    {
+        "name": "com.mysql.jdbc.JDBC42ResultSet",
+        "allDeclaredClasses": true,
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true,
+        "allPublicClasses": true
+    },
+    {
+        "name": "com.mysql.jdbc.JDBC42UpdatableResultSet",
+        "allDeclaredClasses": true,
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true,
+        "allPublicClasses": true
+    },
+    {
+        "name": "com.mysql.jdbc.JDBC42PreparedStatement",
+        "allDeclaredClasses": true,
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true,
+        "allPublicClasses": true
+    }
+]

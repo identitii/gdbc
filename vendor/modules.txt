@@ -1,0 +1,38 @@
+# cloud.google.com/go v0.37.4
+cloud.google.com/go/civil
+# github.com/denisenkom/go-mssqldb v0.0.0-20190515213511-eb9f6a1743f3
+github.com/denisenkom/go-mssqldb
+github.com/denisenkom/go-mssqldb/internal/cp
+# github.com/jackc/pgx v3.4.0+incompatible
+github.com/jackc/pgx/stdlib
+github.com/jackc/pgx
+github.com/jackc/pgx/pgtype
+github.com/jackc/pgx/internal/sanitize
+github.com/jackc/pgx/pgio
+github.com/jackc/pgx/pgproto3
+github.com/jackc/pgx/chunkreader
+# github.com/jmoiron/sqlx v1.2.0
+github.com/jmoiron/sqlx
+github.com/jmoiron/sqlx/reflectx
+# github.com/lib/pq v1.0.0
+github.com/lib/pq
+github.com/lib/pq/oid
+# github.com/pkg/errors v0.8.0
+github.com/pkg/errors
+# golang.org/x/crypto v0.0.0-20190325154230-a5d413f7728c
+golang.org/x/crypto/md4
+golang.org/x/crypto/pbkdf2
+# golang.org/x/text v0.3.1-0.20180807135948-17ff2d5776d2
+golang.org/x/text/secure/precis
+golang.org/x/text/cases
+golang.org/x/text/language
+golang.org/x/text/runes
+golang.org/x/text/secure/bidirule
+golang.org/x/text/transform
+golang.org/x/text/unicode/norm
+golang.org/x/text/width
+golang.org/x/text/internal
+golang.org/x/text/internal/language
+golang.org/x/text/internal/language/compact
+golang.org/x/text/unicode/bidi
+golang.org/x/text/internal/tag

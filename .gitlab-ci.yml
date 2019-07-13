@@ -1,0 +1,82 @@
+cache:
+  paths:
+    - .m2/
+
+variables:
+  MAVEN_OPTS: "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dmaven.repo.local=.m2"
+
+stages:
+  - build
+  - build_tests
+  - test
+
+mssql:
+  stage: build
+  image: raonigabriel/graalvm-playground:19.0.0
+  script: wrapper/scripts/wrap-mssql.sh
+  artifacts:
+    paths:
+      - mssql/
+
+oracle:
+  stage: build
+  image: raonigabriel/graalvm-playground:19.0.0
+  script: wrapper/scripts/wrap-oracle.sh
+  artifacts:
+    paths:
+      - oracle/
+
+postgresql:
+  stage: build
+  image: raonigabriel/graalvm-playground:19.0.0
+  script: wrapper/scripts/wrap-postgresql.sh
+  artifacts:
+    paths:
+      - postgresql/
+
+mssql_test:
+  stage: test
+  image: golang:1.12
+  services:
+    - name: registry.gitlab.com/identitii/gdbc/mssql:2017-CU12-ubuntu
+      alias: db
+  dependencies:
+    - mssql
+  variables:
+    ACCEPT_EULA: "Y"
+    SA_PASSWORD: yourStrong(!)Password
+    MSSQL_DB: test
+    MSSQL_USER: root
+    MSSQL_PASSWORD: yourStrong(!)Password
+    MSSQL_HOST: db
+  script: ./benchmark.sh mssql
+
+oracle_test:
+  stage: test
+  image: golang:1.12
+  services:
+    - name: registry.gitlab.com/identitii/gdbc/oracle:12c-r1
+      alias: db
+  dependencies:
+    - oracle
+  variables:
+    ORACLE_DB: xe
+    ORACLE_USER: GDBCUSER
+    ORACLE_PASSWORD: password
+    ORACLE_HOST: db
+  script: sleep 30 && ./benchmark.sh oracle
+
+postgresql_test:
+  stage: test
+  image: golang:1.12
+  services:
+    - name: postgres:latest
+      alias: db
+  dependencies:
+    - postgresql
+  variables:
+    POSTGRES_DB: test
+    POSTGRES_USER: root
+    POSTGRES_PASSWORD: password
+    POSTGRES_HOST: db
+  script: ./benchmark.sh postgresql
