@@ -10,3 +10,5 @@ wrapper-old/
 wrapper/graal\.tar\.gz
 
 wrapper/graalvm-ce-19\.1\.0/
+oracle/*.so
+oracle/*.dylib

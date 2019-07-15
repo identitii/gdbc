@@ -23,13 +23,22 @@ More may be supported, but these are the ones we package, test, and distribute.
 - Microsoft SQL Server (mssql)
   - com.microsoft.sqlserver:mssql-jdbc:7.3.0.jre8-preview
 - Oracle DB (oracle)
-  - com.oracle:ojdbc6:12.1.0.1
+  - com.oracle:ojdbc6:12.1.0.1 (*NOT* distributed, as license appears to prohibit it)
 - PostgreSQL (postgresql)
   - org.postgresql:postgresql:42.2.5.jre6
+
+### Building
+
+For oracle, or if you want to build the native libraries yourself...
+
+On osx run `./build-all.sh` to build for both mac and linux.
+
+On linux, run individual scripts e.g. `./wrapper/scripts/wrap-oracle.sh` 
 
 ### Usage
 
 Import oracle, mssql, or postgresql driver.
+
 
 ```golang
 import _ "github.com/identitii/gdbc/oracle"
